@@ -16,7 +16,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    application.statusBarHidden=NO;
+//    application.statusBarStyle=UIStatusBarStyleLightContent;
+    self.window=[[UIWindow alloc]init];
+    self.window.frame=[UIScreen mainScreen].bounds;
+    
+    UITabBarController* tabVc=[[UITabBarController alloc]init];
+    
+    self.window.rootViewController=tabVc;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
