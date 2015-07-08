@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		611017D61B4D4A2800C143AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 611017D51B4D4A2800C143AC /* main.m */; };
 		611017D91B4D4A2800C143AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 611017D81B4D4A2800C143AC /* AppDelegate.m */; };
-		611017DC1B4D4A2800C143AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611017DB1B4D4A2800C143AC /* ViewController.m */; };
-		611017DF1B4D4A2800C143AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 611017DD1B4D4A2800C143AC /* Main.storyboard */; };
 		611017E11B4D4A2800C143AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 611017E01B4D4A2800C143AC /* Images.xcassets */; };
 		611017E41B4D4A2800C143AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611017E21B4D4A2800C143AC /* LaunchScreen.xib */; };
 		611017F01B4D4A2800C143AC /* XW____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 611017EF1B4D4A2800C143AC /* XW____Tests.m */; };
+		611017FA1B4D4B3A00C143AC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 611017F91B4D4B3A00C143AC /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +31,12 @@
 		611017D51B4D4A2800C143AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		611017D71B4D4A2800C143AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		611017D81B4D4A2800C143AC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		611017DA1B4D4A2800C143AC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		611017DB1B4D4A2800C143AC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		611017DE1B4D4A2800C143AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		611017E01B4D4A2800C143AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		611017E31B4D4A2800C143AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		611017E91B4D4A2800C143AC /* XW新浪微博Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XW新浪微博Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		611017EE1B4D4A2800C143AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		611017EF1B4D4A2800C143AC /* XW____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XW____Tests.m"; sourceTree = "<group>"; };
+		611017F91B4D4B3A00C143AC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../../../Documents/黑马ios/0703/代码/黑马微博03-增加导航功能/黑马微博/Images.xcassets/LaunchImage.launchimage/Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +80,6 @@
 			children = (
 				611017D71B4D4A2800C143AC /* AppDelegate.h */,
 				611017D81B4D4A2800C143AC /* AppDelegate.m */,
-				611017DA1B4D4A2800C143AC /* ViewController.h */,
-				611017DB1B4D4A2800C143AC /* ViewController.m */,
-				611017DD1B4D4A2800C143AC /* Main.storyboard */,
 				611017E01B4D4A2800C143AC /* Images.xcassets */,
 				611017E21B4D4A2800C143AC /* LaunchScreen.xib */,
 				611017D31B4D4A2800C143AC /* Supporting Files */,
@@ -96,6 +90,7 @@
 		611017D31B4D4A2800C143AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				611017F91B4D4B3A00C143AC /* Default@2x.png */,
 				611017D41B4D4A2800C143AC /* Info.plist */,
 				611017D51B4D4A2800C143AC /* main.m */,
 			);
@@ -163,6 +158,7 @@
 		611017C81B4D4A2700C143AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = XW;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = bbq;
 				TargetAttributes = {
@@ -199,7 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				611017DF1B4D4A2800C143AC /* Main.storyboard in Resources */,
+				611017FA1B4D4B3A00C143AC /* Default@2x.png in Resources */,
 				611017E41B4D4A2800C143AC /* LaunchScreen.xib in Resources */,
 				611017E11B4D4A2800C143AC /* Images.xcassets in Resources */,
 			);
@@ -219,7 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				611017DC1B4D4A2800C143AC /* ViewController.m in Sources */,
 				611017D91B4D4A2800C143AC /* AppDelegate.m in Sources */,
 				611017D61B4D4A2800C143AC /* main.m in Sources */,
 			);
@@ -244,14 +239,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		611017DD1B4D4A2800C143AC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				611017DE1B4D4A2800C143AC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		611017E21B4D4A2800C143AC /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
