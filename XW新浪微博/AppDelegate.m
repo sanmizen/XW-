@@ -15,6 +15,7 @@
 @implementation AppDelegate
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     application.statusBarHidden=NO;
 //    application.statusBarStyle=UIStatusBarStyleLightContent;
