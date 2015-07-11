@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "XWTabBarViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -21,10 +23,7 @@
 //    application.statusBarStyle=UIStatusBarStyleLightContent;
     self.window=[[UIWindow alloc]init];
     self.window.frame=[UIScreen mainScreen].bounds;
-    
-    UITabBarController* tabVc=[[UITabBarController alloc]init];
-    
-    self.window.rootViewController=tabVc;
+    self.window.rootViewController=[[XWTabBarViewController alloc]init];
     [self.window makeKeyAndVisible];
     return YES;
 }
