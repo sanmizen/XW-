@@ -1,0 +1,22 @@
+//
+//  XW新浪微博-Prefix.pch
+//  XW新浪微博
+//
+//  Created by bbq on 15/7/15.
+//  Copyright (c) 2015年 bbq. All rights reserved.
+//
+
+#ifndef XW_____XW_____Prefix_pch
+#define XW_____XW_____Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "AFNetworking.h"
+
+#define Kclient_id @"3086973007"
+#define Kredirect_uri @"http://www.sina.com.cn/"
+#define Kclient_secret @"1d1cf6f5e49170869324fffe1b2c9b95"
+#define KaccountFilePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"account.data"]
+
+#endif
