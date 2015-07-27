@@ -9,7 +9,7 @@
 #import "XWOAuthViewController.h"
 #import "AFNetworking.h"
 #import "XWAccount.h"
-#import "XWOAuthTool.h"
+#import "XWAccountTool.h"
 
 @interface XWOAuthViewController ()
 
@@ -51,6 +51,8 @@
     }
     return YES;
 }
+
+
 /**
  获得token
  */
@@ -68,7 +70,7 @@
         NSLog(@"success---%@",responseObject);
         XWAccount* account= [XWAccount accountWithDict:responseObject];
         //利用nscoder保存account对象
-        [XWOAuthTool saveAccount:account];
+        [XWAccountTool saveAccount:account];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error-----%@",error);
         

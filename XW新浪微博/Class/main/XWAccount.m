@@ -29,6 +29,7 @@
     [aCoder encodeObject:self.expires_in forKey:@"expires_in"];
     [aCoder encodeObject:self.uid forKey:@"uid"];
     [aCoder encodeObject:self.expires_time forKey:@"expires_time"];
+    [aCoder encodeObject:self.userName forKey:@"userName"];
 }
 
 /**
@@ -40,7 +41,7 @@
         _expires_in=[aDecoder decodeObjectForKey:@"expires_in"];
         _uid=[aDecoder decodeObjectForKey:@"uid"];
         _expires_time=[aDecoder decodeObjectForKey:@"expires_time"];
-       
+        _userName=[aDecoder decodeObjectForKey:@"userName"];
     }
      return self;
    

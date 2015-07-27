@@ -9,8 +9,7 @@
 #import "XWHomeTableViewController.h"
 #import "UIBarButtonItem+Extension.h"
 #import "XWHomeTitleButton.h"
-#import "AFNetworking.h"
-#import "XWOAuthTool.h"
+#import "XWAccountTool.h"
 #import "XWAccount.h"
 #import "UIImageView+WebCache.h"
 #import "MJExtension.h"
@@ -18,12 +17,18 @@
 #import "XWUser.h"
 #import "XWPhoto.h"
 #import "XWFooterView.h"
+#import "MJRefresh.h"
+#import "XWHomeStatusTool.h"
+#import "XWHomeStatusPara.h"
+#import "XWHomeStatusResult.h"
+#import "XWUserInfoPara.h"
+#import "XWUserInfoTool.h"
 
 @interface XWHomeTableViewController ()
 @property(nonatomic,assign) BOOL up;
 @property(nonatomic,strong) NSArray* dictArray;
 @property(nonatomic,strong) NSMutableArray* statusArray;
-
+@property(nonatomic,weak) XWHomeTitleButton* titleBtn;
 @end
 
 @implementation XWHomeTableViewController
@@ -33,9 +38,13 @@
     [self setupBtnItem];
     UIRefreshControl* refresh=[[UIRefreshControl alloc]init];
     [self.tableView addSubview:refresh];
+    //首次加载
     [self RefreshStatus:refresh];
     [refresh addTarget:self action:@selector(RefreshStatus:) forControlEvents:UIControlEventValueChanged];
-    [self downRefresh];
+    //使用MJ框架实现下拉刷新
+    [self.tableView addFooterWithTarget:self action:@selector(refreshOldStatus)];
+    //设置标题文字为用户昵称
+    [self setupTitleText];
     }
 /**
  statusArray懒加载
@@ -48,44 +57,152 @@
 }
 
 /**
- *  设置下拉菜单
+ *  设置标题文字为用户昵称
  */
--(void)downRefresh{
-    self.tableView.tableFooterView=[XWFooterView Footer];
+-(void)setupTitleText{
+//    AFHTTPRequestOperationManager * mrg=[AFHTTPRequestOperationManager manager];
+//    NSString* url=@"https://api.weibo.com/2/users/show.json";
+//    NSMutableDictionary* getDict=[NSMutableDictionary dictionary];
+//    XWAccount* account=[XWAccountTool getAccount];
+//    getDict[@"access_token"]=account.access_token;
+//    getDict[@"uid"]=account.uid;
+//    [mrg GET:url parameters:getDict success:^(AFHTTPRequestOperation *operation, NSDictionary* responseObject) {
+//        XWUser* user=[XWUser objectWithKeyValues:responseObject];
+//            [self.titleBtn setTitle:user.name forState:UIControlStateNormal];
+//        account.userName=user.name;
+//        //归档userName
+//        [XWAccountTool saveAccount:account];
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
+    XWAccount* account=[XWAccountTool getAccount];
+    XWUserInfoPara* para=[[XWUserInfoPara alloc]init];
+    para.access_token=account.access_token;
+    para.uid=account.uid ;
+    
+    [XWUserInfoTool getUserInfo:para success:^(XWUser *result) {
+    [self.titleBtn setTitle:result.name forState:UIControlStateNormal];
+    account.userName=result.name;
+    //归档userName
+    [XWAccountTool saveAccount:account];
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+
 }
 
 
--(void)RefreshStatus:(UIRefreshControl*)refresh{
-    AFHTTPRequestOperationManager * mrg=[AFHTTPRequestOperationManager manager];
-    NSString* statusUrl=@"https://api.weibo.com/2/statuses/home_timeline.json";
-    NSMutableDictionary* getDict=[NSMutableDictionary dictionary];
-    XWAccount* account=[XWOAuthTool getAccount];
-    getDict[@"access_token"]=account.access_token;
-    getDict[@"count"]=@10;
-    /**
-     *  如果firstStstus不为空，则发送since_id作为参数
-     */
-    XWStatus* firstStstus= [self.statusArray firstObject];
-    if (firstStstus) {
-        getDict[@"since_id"]=firstStstus.idstr;
-    }
+/**
+ *  设置上拉刷新旧数据
+ */
+-(void)refreshOldStatus{
+//    NSString* statusUrl=@"https://api.weibo.com/2/statuses/home_timeline.json";
+//    NSMutableDictionary* getDict=[NSMutableDictionary dictionary];
+//    XWAccount* account=[XWAccountTool getAccount];
+//    getDict[@"access_token"]=account.access_token;
+//    getDict[@"count"]=@3;
+//    XWStatus* lastObjectStatus=[self.statusArray lastObject];
+//    long long maxId= [lastObjectStatus.idstr longLongValue]-1;
+//    NSString* maxIdStr=[NSString stringWithFormat:@"%lld",maxId];
+//    getDict[@"max_id"]=maxIdStr;
+//    
+//    /**
+//     *  使用自己封装的get请求
+//     */
+//    [XWHttpTool get:statusUrl para:getDict success:^(id response) {
+//        [self.tableView footerEndRefreshing];
+//        NSArray* dictArray=response[@"statuses"];
+//        NSArray* moreStatusArray=[XWStatus objectArrayWithKeyValuesArray:dictArray];
+//        [self.statusArray addObjectsFromArray:moreStatusArray];
+//        [self.tableView reloadData];
+//
+//    } failure:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
+//
+    XWAccount* account=[XWAccountTool getAccount];
+    XWHomeStatusPara* para=[[XWHomeStatusPara alloc]init];
+    para.access_token=account.access_token;
+    //para是NSnumber
+    para.count=@5;
     
-    [mrg GET:statusUrl parameters:getDict success:^(AFHTTPRequestOperation *operation, NSDictionary* responseObject) {
-        //获得微博status的array
-        self.dictArray=responseObject[@"statuses"];
-        NSArray* newArray=[XWStatus objectArrayWithKeyValuesArray:self.dictArray];
-        NSRange range=NSMakeRange(0, newArray.count);
-        NSIndexSet* indexSet=[NSIndexSet indexSetWithIndexesInRange:range];
-        [self.statusArray insertObjects:newArray atIndexes:indexSet];
+    XWStatus* lastObjectStatus=[self.statusArray lastObject];
+    para.max_id= @([lastObjectStatus.idstr longLongValue]-1);
+
+    [XWHomeStatusTool loadWeiboStatus:para success:^(XWHomeStatusResult *result) {
+        [self.tableView footerEndRefreshing];
         
+        [self.statusArray addObjectsFromArray:result.statuses];
+        [self.tableView reloadData];
+
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+}
+
+//下拉刷新新数据
+-(void)RefreshStatus:(UIRefreshControl*)refresh{
+//    AFHTTPRequestOperationManager * mrg=[AFHTTPRequestOperationManager manager];
+//    NSString* statusUrl=@"https://api.weibo.com/2/statuses/home_timeline.json";
+//    NSMutableDictionary* getDict=[NSMutableDictionary dictionary];
+//    XWAccount* account=[XWAccountTool getAccount];
+//    getDict[@"access_token"]=account.access_token;
+//    getDict[@"count"]=@10;
+//    /**
+//     *  如果firstStstus不为空，则发送since_id作为参数
+//     */
+//    XWStatus* firstStstus= [self.statusArray firstObject];
+//    if (firstStstus) {
+//        getDict[@"since_id"]=firstStstus.idstr;
+//    }
+//    
+//    [mrg GET:statusUrl parameters:getDict success:^(AFHTTPRequestOperation *operation, NSDictionary* responseObject) {
+//        //获得微博status的array
+//        self.dictArray=responseObject[@"statuses"];
+//        //通过字典数组来创建一个模型数组
+//        NSArray* newArray=[XWStatus objectArrayWithKeyValuesArray:self.dictArray];
+//        NSRange range=NSMakeRange(0, newArray.count);
+//        NSIndexSet* indexSet=[NSIndexSet indexSetWithIndexesInRange:range];
+//         // 把最新的微博数插入到最前面
+//        [self.statusArray insertObjects:newArray atIndexes:indexSet];
+//        
+//        [self.tableView reloadData];
+//        //弹出新状态数
+//        [self showNewStatusCount:newArray.count];
+//        [refresh endRefreshing];
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"%@",error);
+//        [refresh endRefreshing];
+//    }];
+    
+    XWAccount* account=[XWAccountTool getAccount];
+    XWHomeStatusPara* para=[[XWHomeStatusPara alloc]init];
+    para.access_token=account.access_token;
+    //para是NSnumber
+    para.count=@10;
+    
+    XWStatus* firstStatus=[self.statusArray firstObject];
+        if (firstStatus) {
+            para.since_id=@([firstStatus.idstr longLongValue]);
+        }
+    
+    [XWHomeStatusTool loadWeiboStatus:para success:^(XWHomeStatusResult *result) {
+      
+        NSRange range=NSMakeRange(0, result.statuses.count);
+        NSIndexSet* indexSet=[NSIndexSet indexSetWithIndexesInRange:range];
+         // 把最新的微博数插入到最前面
+        [self.statusArray insertObjects:result.statuses atIndexes:indexSet];
+
         [self.tableView reloadData];
         //弹出新状态数
-        [self showNewStatusCount:newArray.count];
+        [self showNewStatusCount:result.statuses.count];
         [refresh endRefreshing];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+    } failure:^(NSError *error) {
         NSLog(@"%@",error);
-        [refresh endRefreshing];
     }];
+
 }
 
 /**
@@ -130,15 +247,18 @@
     //将创建UIBarButtonItem的代码封装进分类中
     self.navigationItem.leftBarButtonItem= [UIBarButtonItem itemWithImageName:@"navigationbar_friendsearch" highlightImageName:@"navigationbar_friendsearch_highlighted" target:self selector:@selector(left)];
     self.navigationItem.rightBarButtonItem=[UIBarButtonItem itemWithImageName:@"navigationbar_pop" highlightImageName:@"navigationbar_pop_highlighted" target:self selector:@selector(right)];
-    
+    //从归档中读取userName，如果userName没有值则用HOME
+    XWAccount* account=[XWAccountTool getAccount];
+    NSString* userName=account.userName?account.userName:@"HOME";
     //标题按钮
-    XWHomeTitleButton* btn=[[XWHomeTitleButton alloc]initWithText:@"GYW的微博" imageName:@"navigationbar_arrow_down"];
+    XWHomeTitleButton* btn=[[XWHomeTitleButton alloc]initWithText:userName imageName:@"navigationbar_arrow_down"];
+    self.titleBtn=btn;
     btn.frame=CGRectMake(0, 0, 10, 50);
     //    btn.titleLabel.textAlignment=NSTextAlignmentRight;
     //    [btn setBackgroundColor:[UIColor blackColor]];
     [btn addTarget:self action:@selector(titleBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView=btn;
-    //    btn.backgroundColor=[UIColor yellowColor];
+
 
 }
 
@@ -192,7 +312,7 @@
  
 
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:status.user.profile_image_url] placeholderImage:[UIImage imageNamed:@"cast"]];
-    
+//
    
     return cell;
 }

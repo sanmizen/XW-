@@ -17,6 +17,10 @@
 @property(nonatomic,strong) NSDate* expires_time;
 /** string 	当前授权用户的UID。*/
 @property(nonatomic,copy) NSString* uid;
+/**
+ *  用户昵称
+ */
+@property(nonatomic,strong) NSString* userName;
 
 +(instancetype) accountWithDict:(NSDictionary*)dict;
 @end

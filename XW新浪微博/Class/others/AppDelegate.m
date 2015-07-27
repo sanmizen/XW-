@@ -11,7 +11,7 @@
 #import "XWTabBarViewController.h"
 #import "XWOAuthViewController.h"
 #import "XWAccount.h"
-#import "XWOAuthTool.h"
+#import "XWAccountTool.h"
 #import "SDWebImageManager.h"
 #import "SDImageCache.h"
 
@@ -30,7 +30,7 @@
    
     self.window=[[UIWindow alloc]init];
     self.window.frame=[UIScreen mainScreen].bounds;
-    XWAccount* account=[XWOAuthTool getAccount];
+    XWAccount* account=[XWAccountTool getAccount];
     if (account) {
         self.window.rootViewController=[[XWTabBarViewController alloc]init];
     }else{

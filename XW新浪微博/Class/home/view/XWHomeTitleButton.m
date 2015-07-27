@@ -38,7 +38,9 @@
 }
 
 
-
+/**
+ *  系统自动调用返回button中title的宽度
+ */
 -(CGRect)titleRectForContentRect:(CGRect)contentRect{
     CGFloat titleX=0;
     CGFloat titleY=0;

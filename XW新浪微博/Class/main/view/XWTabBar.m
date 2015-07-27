@@ -15,6 +15,7 @@
 @implementation XWTabBar
 
 
+
 -(void)layoutSubviews{
     [super layoutSubviews];
 //    CGFloat btnX=0;
