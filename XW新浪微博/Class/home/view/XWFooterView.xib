@@ -33,6 +33,7 @@
                 <outlet property="indicatorView" destination="QCH-wo-VSq" id="rsR-KX-QGt"/>
                 <outlet property="label" destination="ZSf-Wk-n4m" id="jxO-7P-2fE"/>
             </connections>
+            <point key="canvasLocation" x="361" y="341.5"/>
         </view>
     </objects>
 </document>

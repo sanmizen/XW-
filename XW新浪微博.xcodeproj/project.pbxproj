@@ -14,6 +14,9 @@
 		611017FA1B4D4B3A00C143AC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 611017F91B4D4B3A00C143AC /* Default@2x.png */; };
 		611221311B57E2F200EEC110 /* XWAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 611221301B57E2F200EEC110 /* XWAccountTool.m */; };
 		61148DF11B6504DE00FC96D7 /* XWHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 61148DF01B6504DE00FC96D7 /* XWHttpTool.m */; };
+		6153E4621B6A71DD00EC50EE /* XWStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6153E4611B6A71DD00EC50EE /* XWStatusFrame.m */; };
+		6153E4651B6A71FD00EC50EE /* XWOriginalFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6153E4641B6A71FD00EC50EE /* XWOriginalFrame.m */; };
+		6153E4681B6A720C00EC50EE /* XWRetweetFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6153E4671B6A720C00EC50EE /* XWRetweetFrame.m */; };
 		615AE40A1B5B8A2300885C71 /* XWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 615AE4091B5B8A2300885C71 /* XWUser.m */; };
 		615AE40D1B5B8AC600885C71 /* XWStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 615AE40C1B5B8AC600885C71 /* XWStatus.m */; };
 		615AE4101B5B8C6900885C71 /* XWPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 615AE40F1B5B8C6900885C71 /* XWPhoto.m */; };
@@ -51,22 +54,35 @@
 		61738C861B6273D80052B7AA /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 61738C4F1B6273D80052B7AA /* NSObject+MJCoding.m */; };
 		61738C871B6273D80052B7AA /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 61738C511B6273D80052B7AA /* NSObject+MJKeyValue.m */; };
 		61738C881B6273D80052B7AA /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 61738C531B6273D80052B7AA /* NSObject+MJMember.m */; };
+		617513261B763E55008F6CD7 /* XWStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 617513251B763E55008F6CD7 /* XWStatusPhotosView.m */; };
+		617513291B763E75008F6CD7 /* XWStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 617513281B763E75008F6CD7 /* XWStatusPhotoView.m */; };
 		617B2C1A1B50B8B200ACEE0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 617B2C171B50B8B200ACEE0C /* AppDelegate.m */; };
 		617B2C1D1B50BB0D00ACEE0C /* XWMsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617B2C1C1B50BB0D00ACEE0C /* XWMsgTableViewController.m */; };
 		617B2C231B50F84200ACEE0C /* XWHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617B2C221B50F84200ACEE0C /* XWHomeTableViewController.m */; };
 		617B2C261B51057F00ACEE0C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 617B2C251B51057F00ACEE0C /* UIBarButtonItem+Extension.m */; };
 		617B2C291B514B6F00ACEE0C /* XWMeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617B2C281B514B6F00ACEE0C /* XWMeTableViewController.m */; };
 		618A04901B5699D600266683 /* XWAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 618A048F1B5699D600266683 /* XWAccount.m */; };
+		619464171B6FAFF900D90C72 /* NSDate+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 619464161B6FAFF900D90C72 /* NSDate+MJ.m */; };
 		619CA1D51B5E7DD80090DC0E /* XWInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 619CA1D41B5E7DD80090DC0E /* XWInputToolBar.m */; };
 		619CB8ED1B6655EB00016A06 /* XWHomeStatusPara.m in Sources */ = {isa = PBXBuildFile; fileRef = 619CB8EC1B6655EB00016A06 /* XWHomeStatusPara.m */; };
 		619CB8F01B6657D800016A06 /* XWHomeStatusResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 619CB8EF1B6657D800016A06 /* XWHomeStatusResult.m */; };
 		619CB8F31B665AEC00016A06 /* XWHomeStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 619CB8F21B665AEC00016A06 /* XWHomeStatusTool.m */; };
 		619CB8F61B66757200016A06 /* XWUserInfoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 619CB8F51B66757200016A06 /* XWUserInfoTool.m */; };
 		619CB8F91B6675CE00016A06 /* XWUserInfoPara.m in Sources */ = {isa = PBXBuildFile; fileRef = 619CB8F81B6675CE00016A06 /* XWUserInfoPara.m */; };
+		61A0A63F1B67B15A00E48C1D /* XWUnreadCountPara.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A0A63E1B67B15A00E48C1D /* XWUnreadCountPara.m */; };
+		61A0A6421B67B1D900E48C1D /* XWUnreadCountResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A0A6411B67B1D900E48C1D /* XWUnreadCountResult.m */; };
+		61A0A6451B67B2D100E48C1D /* XWGetUnreadTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A0A6441B67B2D100E48C1D /* XWGetUnreadTool.m */; };
 		61A1085C1B520A2A00A15E88 /* XWDiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A1085B1B520A2A00A15E88 /* XWDiscoverTableViewController.m */; };
 		61A1085F1B52100000A15E88 /* UIImage+resizable.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A1085E1B52100000A15E88 /* UIImage+resizable.m */; };
 		61A108631B524C7B00A15E88 /* XWSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A108621B524C7B00A15E88 /* XWSearchBar.m */; };
 		61A108661B52545400A15E88 /* XWHomeTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A108651B52545400A15E88 /* XWHomeTitleButton.m */; };
+		61A4F9971B6C725D0047917C /* NSString+XWCacularTextSizeExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A4F9961B6C725D0047917C /* NSString+XWCacularTextSizeExtension.m */; };
+		61ABB8501B69074A00581D8E /* XWOriginalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ABB8461B69074A00581D8E /* XWOriginalView.m */; };
+		61ABB8511B69074A00581D8E /* XWRetweetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ABB8481B69074A00581D8E /* XWRetweetView.m */; };
+		61ABB8521B69074A00581D8E /* XWStatusDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ABB84A1B69074A00581D8E /* XWStatusDetailView.m */; };
+		61ABB8531B69074A00581D8E /* XWToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ABB84D1B69074A00581D8E /* XWToolBarView.m */; };
+		61ABB8541B69074A00581D8E /* XWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ABB84F1B69074A00581D8E /* XWTableViewCell.m */; };
+		61AE25EE1B6BA74E00865579 /* XWDetailFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE25ED1B6BA74E00865579 /* XWDetailFrame.m */; };
 		61AE31CF1B61278900E54AEA /* XWSelectImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE31CE1B61278900E54AEA /* XWSelectImageView.m */; };
 		61B579C91B4EB210002B6109 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B579C81B4EB210002B6109 /* UIKit.framework */; };
 		61BE27841B5D1AF50049D38C /* XWFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE27831B5D1AF50049D38C /* XWFooterView.m */; };
@@ -115,6 +131,12 @@
 		611221301B57E2F200EEC110 /* XWAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWAccountTool.m; sourceTree = "<group>"; };
 		61148DEF1B6504DE00FC96D7 /* XWHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWHttpTool.h; sourceTree = "<group>"; };
 		61148DF01B6504DE00FC96D7 /* XWHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWHttpTool.m; sourceTree = "<group>"; };
+		6153E4601B6A71DD00EC50EE /* XWStatusFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWStatusFrame.h; sourceTree = "<group>"; };
+		6153E4611B6A71DD00EC50EE /* XWStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWStatusFrame.m; sourceTree = "<group>"; };
+		6153E4631B6A71FD00EC50EE /* XWOriginalFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWOriginalFrame.h; sourceTree = "<group>"; };
+		6153E4641B6A71FD00EC50EE /* XWOriginalFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWOriginalFrame.m; sourceTree = "<group>"; };
+		6153E4661B6A720C00EC50EE /* XWRetweetFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWRetweetFrame.h; sourceTree = "<group>"; };
+		6153E4671B6A720C00EC50EE /* XWRetweetFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWRetweetFrame.m; sourceTree = "<group>"; };
 		615AE4081B5B8A2300885C71 /* XWUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWUser.h; sourceTree = "<group>"; };
 		615AE4091B5B8A2300885C71 /* XWUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWUser.m; sourceTree = "<group>"; };
 		615AE40B1B5B8AC600885C71 /* XWStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWStatus.h; sourceTree = "<group>"; };
@@ -189,6 +211,10 @@
 		61738C511B6273D80052B7AA /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
 		61738C521B6273D80052B7AA /* NSObject+MJMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJMember.h"; sourceTree = "<group>"; };
 		61738C531B6273D80052B7AA /* NSObject+MJMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJMember.m"; sourceTree = "<group>"; };
+		617513241B763E55008F6CD7 /* XWStatusPhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWStatusPhotosView.h; sourceTree = "<group>"; };
+		617513251B763E55008F6CD7 /* XWStatusPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWStatusPhotosView.m; sourceTree = "<group>"; };
+		617513271B763E75008F6CD7 /* XWStatusPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XWStatusPhotoView.h; path = toolBarView/XWStatusPhotoView.h; sourceTree = "<group>"; };
+		617513281B763E75008F6CD7 /* XWStatusPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XWStatusPhotoView.m; path = toolBarView/XWStatusPhotoView.m; sourceTree = "<group>"; };
 		617B2C161B50B8B200ACEE0C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		617B2C171B50B8B200ACEE0C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		617B2C1B1B50BB0D00ACEE0C /* XWMsgTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWMsgTableViewController.h; sourceTree = "<group>"; };
@@ -202,6 +228,8 @@
 		618A048C1B56867300266683 /* XW新浪微博-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XW新浪微博-Prefix.pch"; sourceTree = "<group>"; };
 		618A048E1B5699D600266683 /* XWAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWAccount.h; sourceTree = "<group>"; };
 		618A048F1B5699D600266683 /* XWAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWAccount.m; sourceTree = "<group>"; };
+		619464151B6FAFF900D90C72 /* NSDate+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MJ.h"; sourceTree = "<group>"; };
+		619464161B6FAFF900D90C72 /* NSDate+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MJ.m"; sourceTree = "<group>"; };
 		619CA1D31B5E7DD80090DC0E /* XWInputToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWInputToolBar.h; sourceTree = "<group>"; };
 		619CA1D41B5E7DD80090DC0E /* XWInputToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWInputToolBar.m; sourceTree = "<group>"; };
 		619CB8EB1B6655EB00016A06 /* XWHomeStatusPara.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWHomeStatusPara.h; sourceTree = "<group>"; };
@@ -214,6 +242,12 @@
 		619CB8F51B66757200016A06 /* XWUserInfoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWUserInfoTool.m; sourceTree = "<group>"; };
 		619CB8F71B6675CE00016A06 /* XWUserInfoPara.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWUserInfoPara.h; sourceTree = "<group>"; };
 		619CB8F81B6675CE00016A06 /* XWUserInfoPara.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWUserInfoPara.m; sourceTree = "<group>"; };
+		61A0A63D1B67B15A00E48C1D /* XWUnreadCountPara.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWUnreadCountPara.h; sourceTree = "<group>"; };
+		61A0A63E1B67B15A00E48C1D /* XWUnreadCountPara.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWUnreadCountPara.m; sourceTree = "<group>"; };
+		61A0A6401B67B1D900E48C1D /* XWUnreadCountResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWUnreadCountResult.h; sourceTree = "<group>"; };
+		61A0A6411B67B1D900E48C1D /* XWUnreadCountResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWUnreadCountResult.m; sourceTree = "<group>"; };
+		61A0A6431B67B2D100E48C1D /* XWGetUnreadTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWGetUnreadTool.h; sourceTree = "<group>"; };
+		61A0A6441B67B2D100E48C1D /* XWGetUnreadTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWGetUnreadTool.m; sourceTree = "<group>"; };
 		61A1085A1B520A2A00A15E88 /* XWDiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWDiscoverTableViewController.h; sourceTree = "<group>"; };
 		61A1085B1B520A2A00A15E88 /* XWDiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWDiscoverTableViewController.m; sourceTree = "<group>"; };
 		61A1085D1B52100000A15E88 /* UIImage+resizable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+resizable.h"; path = "../UIImage+resizable.h"; sourceTree = "<group>"; };
@@ -222,6 +256,20 @@
 		61A108621B524C7B00A15E88 /* XWSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSearchBar.m; sourceTree = "<group>"; };
 		61A108641B52545400A15E88 /* XWHomeTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWHomeTitleButton.h; sourceTree = "<group>"; };
 		61A108651B52545400A15E88 /* XWHomeTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWHomeTitleButton.m; sourceTree = "<group>"; };
+		61A4F9951B6C725D0047917C /* NSString+XWCacularTextSizeExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XWCacularTextSizeExtension.h"; sourceTree = "<group>"; };
+		61A4F9961B6C725D0047917C /* NSString+XWCacularTextSizeExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XWCacularTextSizeExtension.m"; sourceTree = "<group>"; };
+		61ABB8451B69074A00581D8E /* XWOriginalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWOriginalView.h; sourceTree = "<group>"; };
+		61ABB8461B69074A00581D8E /* XWOriginalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWOriginalView.m; sourceTree = "<group>"; };
+		61ABB8471B69074A00581D8E /* XWRetweetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWRetweetView.h; sourceTree = "<group>"; };
+		61ABB8481B69074A00581D8E /* XWRetweetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWRetweetView.m; sourceTree = "<group>"; };
+		61ABB8491B69074A00581D8E /* XWStatusDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWStatusDetailView.h; sourceTree = "<group>"; };
+		61ABB84A1B69074A00581D8E /* XWStatusDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWStatusDetailView.m; sourceTree = "<group>"; };
+		61ABB84C1B69074A00581D8E /* XWToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWToolBarView.h; sourceTree = "<group>"; };
+		61ABB84D1B69074A00581D8E /* XWToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWToolBarView.m; sourceTree = "<group>"; };
+		61ABB84E1B69074A00581D8E /* XWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWTableViewCell.h; sourceTree = "<group>"; };
+		61ABB84F1B69074A00581D8E /* XWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWTableViewCell.m; sourceTree = "<group>"; };
+		61AE25EC1B6BA74E00865579 /* XWDetailFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWDetailFrame.h; sourceTree = "<group>"; };
+		61AE25ED1B6BA74E00865579 /* XWDetailFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWDetailFrame.m; sourceTree = "<group>"; };
 		61AE31CD1B61278900E54AEA /* XWSelectImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSelectImageView.h; sourceTree = "<group>"; };
 		61AE31CE1B61278900E54AEA /* XWSelectImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSelectImageView.m; sourceTree = "<group>"; };
 		61B579C81B4EB210002B6109 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -343,6 +391,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6153E45F1B6A71BE00EC50EE /* frame */ = {
+			isa = PBXGroup;
+			children = (
+				6153E4601B6A71DD00EC50EE /* XWStatusFrame.h */,
+				6153E4611B6A71DD00EC50EE /* XWStatusFrame.m */,
+				61AE25EC1B6BA74E00865579 /* XWDetailFrame.h */,
+				61AE25ED1B6BA74E00865579 /* XWDetailFrame.m */,
+				6153E4631B6A71FD00EC50EE /* XWOriginalFrame.h */,
+				6153E4641B6A71FD00EC50EE /* XWOriginalFrame.m */,
+				6153E4661B6A720C00EC50EE /* XWRetweetFrame.h */,
+				6153E4671B6A720C00EC50EE /* XWRetweetFrame.m */,
+			);
+			path = frame;
+			sourceTree = "<group>";
+		};
 		61602D141B553FCF001B741A /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +457,7 @@
 		61602D201B5549B6001B741A /* other */ = {
 			isa = PBXGroup;
 			children = (
+				61A0A63C1B67B14300E48C1D /* XWGetUnreadCount */,
 				6112212F1B57E2F200EEC110 /* XWAccountTool.h */,
 				611221301B57E2F200EEC110 /* XWAccountTool.m */,
 				61148DEF1B6504DE00FC96D7 /* XWHttpTool.h */,
@@ -447,6 +511,8 @@
 				61738C261B6273D80052B7AA /* AFNetworking */,
 				61738C3A1B6273D80052B7AA /* MBProgressHUD */,
 				61738C401B6273D80052B7AA /* MJExtension */,
+				61A4F9951B6C725D0047917C /* NSString+XWCacularTextSizeExtension.h */,
+				61A4F9961B6C725D0047917C /* NSString+XWCacularTextSizeExtension.m */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -587,6 +653,7 @@
 		617B2C061B50B8B200ACEE0C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				6153E45F1B6A71BE00EC50EE /* frame */,
 				615AE4081B5B8A2300885C71 /* XWUser.h */,
 				615AE4091B5B8A2300885C71 /* XWUser.m */,
 				615AE40B1B5B8AC600885C71 /* XWStatus.h */,
@@ -600,6 +667,7 @@
 		617B2C071B50B8B200ACEE0C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				61ABB8431B69074A00581D8E /* cell */,
 				61A108641B52545400A15E88 /* XWHomeTitleButton.h */,
 				61A108651B52545400A15E88 /* XWHomeTitleButton.m */,
 				61BE27821B5D1AF50049D38C /* XWFooterView.h */,
@@ -697,19 +765,71 @@
 				619CB8EF1B6657D800016A06 /* XWHomeStatusResult.m */,
 				619CB8F71B6675CE00016A06 /* XWUserInfoPara.h */,
 				619CB8F81B6675CE00016A06 /* XWUserInfoPara.m */,
+				61A0A63D1B67B15A00E48C1D /* XWUnreadCountPara.h */,
+				61A0A63E1B67B15A00E48C1D /* XWUnreadCountPara.m */,
+				61A0A6401B67B1D900E48C1D /* XWUnreadCountResult.h */,
+				61A0A6411B67B1D900E48C1D /* XWUnreadCountResult.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		61A0A63C1B67B14300E48C1D /* XWGetUnreadCount */ = {
+			isa = PBXGroup;
+			children = (
+				61A0A6431B67B2D100E48C1D /* XWGetUnreadTool.h */,
+				61A0A6441B67B2D100E48C1D /* XWGetUnreadTool.m */,
+			);
+			path = XWGetUnreadCount;
 			sourceTree = "<group>";
 		};
 		61A108601B52104E00A15E88 /* catergory */ = {
 			isa = PBXGroup;
 			children = (
+				619464151B6FAFF900D90C72 /* NSDate+MJ.h */,
+				619464161B6FAFF900D90C72 /* NSDate+MJ.m */,
 				61A1085D1B52100000A15E88 /* UIImage+resizable.h */,
 				61A1085E1B52100000A15E88 /* UIImage+resizable.m */,
 				617B2C241B51057F00ACEE0C /* UIBarButtonItem+Extension.h */,
 				617B2C251B51057F00ACEE0C /* UIBarButtonItem+Extension.m */,
 			);
 			name = catergory;
+			sourceTree = "<group>";
+		};
+		61ABB8431B69074A00581D8E /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				617513241B763E55008F6CD7 /* XWStatusPhotosView.h */,
+				617513251B763E55008F6CD7 /* XWStatusPhotosView.m */,
+				617513271B763E75008F6CD7 /* XWStatusPhotoView.h */,
+				617513281B763E75008F6CD7 /* XWStatusPhotoView.m */,
+				61ABB8441B69074A00581D8E /* detailView */,
+				61ABB84B1B69074A00581D8E /* toolBarView */,
+				61ABB84E1B69074A00581D8E /* XWTableViewCell.h */,
+				61ABB84F1B69074A00581D8E /* XWTableViewCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		61ABB8441B69074A00581D8E /* detailView */ = {
+			isa = PBXGroup;
+			children = (
+				61ABB8451B69074A00581D8E /* XWOriginalView.h */,
+				61ABB8461B69074A00581D8E /* XWOriginalView.m */,
+				61ABB8471B69074A00581D8E /* XWRetweetView.h */,
+				61ABB8481B69074A00581D8E /* XWRetweetView.m */,
+				61ABB8491B69074A00581D8E /* XWStatusDetailView.h */,
+				61ABB84A1B69074A00581D8E /* XWStatusDetailView.m */,
+			);
+			path = detailView;
+			sourceTree = "<group>";
+		};
+		61ABB84B1B69074A00581D8E /* toolBarView */ = {
+			isa = PBXGroup;
+			children = (
+				61ABB84C1B69074A00581D8E /* XWToolBarView.h */,
+				61ABB84D1B69074A00581D8E /* XWToolBarView.m */,
+			);
+			path = toolBarView;
 			sourceTree = "<group>";
 		};
 		61BE278B1B5D2DE20049D38C /* sendWeibo */ = {
@@ -895,14 +1015,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61ABB8521B69074A00581D8E /* XWStatusDetailView.m in Sources */,
 				617B2C1D1B50BB0D00ACEE0C /* XWMsgTableViewController.m in Sources */,
+				61ABB8541B69074A00581D8E /* XWTableViewCell.m in Sources */,
 				61738C801B6273D80052B7AA /* MJArgument.m in Sources */,
 				61602D381B5549B6001B741A /* XWNavigationController.m in Sources */,
 				61738C841B6273D80052B7AA /* MJType.m in Sources */,
 				617B2C231B50F84200ACEE0C /* XWHomeTableViewController.m in Sources */,
 				61738C881B6273D80052B7AA /* NSObject+MJMember.m in Sources */,
+				617513291B763E75008F6CD7 /* XWStatusPhotoView.m in Sources */,
 				61DFDAEB1B627F9A00294B05 /* SDWebImageDownloaderOperation.m in Sources */,
 				61DFDAF41B627F9A00294B05 /* UIView+WebCacheOperation.m in Sources */,
+				61ABB8531B69074A00581D8E /* XWToolBarView.m in Sources */,
 				617385441B63CD5200E8F285 /* UIView+MJExtension.m in Sources */,
 				619CB8F61B66757200016A06 /* XWUserInfoTool.m in Sources */,
 				61DFDAEE1B627F9A00294B05 /* UIButton+WebCache.m in Sources */,
@@ -915,15 +1039,19 @@
 				61DFDAE61B627F9A00294B05 /* NSData+ImageContentType.m in Sources */,
 				61738C7D1B6273D80052B7AA /* MBProgressHUD+MJ.m in Sources */,
 				61A1085C1B520A2A00A15E88 /* XWDiscoverTableViewController.m in Sources */,
+				6153E4651B6A71FD00EC50EE /* XWOriginalFrame.m in Sources */,
+				6153E4621B6A71DD00EC50EE /* XWStatusFrame.m in Sources */,
 				61738C871B6273D80052B7AA /* NSObject+MJKeyValue.m in Sources */,
 				61DFDAF21B627F9A00294B05 /* UIImageView+HighlightedWebCache.m in Sources */,
 				617B2C1A1B50B8B200ACEE0C /* AppDelegate.m in Sources */,
 				61602D431B5549B6001B741A /* XWTabBar.m in Sources */,
+				61A0A63F1B67B15A00E48C1D /* XWUnreadCountPara.m in Sources */,
 				617385461B63DD0200E8F285 /* Foundation+Log.m in Sources */,
 				61DFDAE51B627F9A00294B05 /* MKAnnotationView+WebCache.m in Sources */,
 				61738C861B6273D80052B7AA /* NSObject+MJCoding.m in Sources */,
 				61BE27941B5D2E4E0049D38C /* XWsendWeiboTextView.m in Sources */,
 				61DFDAE91B627F9A00294B05 /* SDWebImageDecoder.m in Sources */,
+				61AE25EE1B6BA74E00865579 /* XWDetailFrame.m in Sources */,
 				61DFDAEC1B627F9A00294B05 /* SDWebImageManager.m in Sources */,
 				61738C851B6273D80052B7AA /* MJTypeEncoding.m in Sources */,
 				615AE4101B5B8C6900885C71 /* XWPhoto.m in Sources */,
@@ -932,9 +1060,11 @@
 				61738C831B6273D80052B7AA /* MJMethod.m in Sources */,
 				615AE40A1B5B8A2300885C71 /* XWUser.m in Sources */,
 				611017D61B4D4A2800C143AC /* main.m in Sources */,
+				61A0A6421B67B1D900E48C1D /* XWUnreadCountResult.m in Sources */,
 				61A108631B524C7B00A15E88 /* XWSearchBar.m in Sources */,
 				61DFDAF31B627F9A00294B05 /* UIImageView+WebCache.m in Sources */,
 				61738C7A1B6273D80052B7AA /* AFURLRequestSerialization.m in Sources */,
+				61A4F9971B6C725D0047917C /* NSString+XWCacularTextSizeExtension.m in Sources */,
 				619CB8F31B665AEC00016A06 /* XWHomeStatusTool.m in Sources */,
 				61602D191B553FCF001B741A /* XWOAuthViewController.m in Sources */,
 				61AE31CF1B61278900E54AEA /* XWSelectImageView.m in Sources */,
@@ -956,19 +1086,25 @@
 				61738C7C1B6273D80052B7AA /* AFURLSessionManager.m in Sources */,
 				61DFDAF01B627F9A00294B05 /* UIImage+MultiFormat.m in Sources */,
 				61738C811B6273D80052B7AA /* MJIvar.m in Sources */,
+				61ABB8511B69074A00581D8E /* XWRetweetView.m in Sources */,
 				617385431B63CD5200E8F285 /* UIScrollView+MJRefresh.m in Sources */,
 				61602D391B5549B6001B741A /* XWTabBarViewController.m in Sources */,
 				619CB8F91B6675CE00016A06 /* XWUserInfoPara.m in Sources */,
 				619CB8F01B6657D800016A06 /* XWHomeStatusResult.m in Sources */,
+				617513261B763E55008F6CD7 /* XWStatusPhotosView.m in Sources */,
 				619CB8ED1B6655EB00016A06 /* XWHomeStatusPara.m in Sources */,
 				611221311B57E2F200EEC110 /* XWAccountTool.m in Sources */,
+				6153E4681B6A720C00EC50EE /* XWRetweetFrame.m in Sources */,
+				61A0A6451B67B2D100E48C1D /* XWGetUnreadTool.m in Sources */,
 				61738C821B6273D80052B7AA /* MJMember.m in Sources */,
 				617385411B63CD5200E8F285 /* MJRefreshHeaderView.m in Sources */,
+				61ABB8501B69074A00581D8E /* XWOriginalView.m in Sources */,
 				61DFDAED1B627F9A00294B05 /* SDWebImagePrefetcher.m in Sources */,
 				61738C7B1B6273D80052B7AA /* AFURLResponseSerialization.m in Sources */,
 				61A108661B52545400A15E88 /* XWHomeTitleButton.m in Sources */,
 				61738C781B6273D80052B7AA /* AFSecurityPolicy.m in Sources */,
 				61DFDAE71B627F9A00294B05 /* SDImageCache.m in Sources */,
+				619464171B6FAFF900D90C72 /* NSDate+MJ.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

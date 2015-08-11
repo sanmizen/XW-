@@ -13,10 +13,30 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #import "AFNetworking.h"
+#import "NSString+XWCacularTextSizeExtension.h"
+#import "UIImage+resizable.h"
 
 #define Kclient_id @"3086973007"
 #define Kredirect_uri @"http://www.sina.com.cn/"
 #define Kclient_secret @"1d1cf6f5e49170869324fffe1b2c9b95"
 #define KaccountFilePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"account.data"]
 
+#define statusMargin 10
+
+//原创微博昵称字体
+#define OriginalStatusNameFont [UIFont systemFontOfSize:14]
+
+//原创微博时间字体
+#define OriginalStatusTimeFont [UIFont systemFontOfSize:12]
+
+//原创微博来源字体
+#define OriginalStatusSourceFont OriginalStatusTimeFont
+
+//原创微博正文字体
+#define OriginalStatusTextFont [UIFont systemFontOfSize:15]
+
+//转发微博昵称字体
+#define RetweetedStatusNameFont OriginalStatusNameFont
+//转发微博正文字体
+#define RetweetedStatusTextFont OriginalStatusTextFont
 #endif

@@ -14,6 +14,7 @@
 +(void)getUserInfo:(XWUserInfoPara *)para success:(void (^)(XWUser *))success failure:(void (^)(NSError *))failure{
     [XWHttpTool get:@"https://api.weibo.com/2/users/show.json" para:para.keyValues success:^(id response) {
         //字典转模型
+        
         XWUser* result= [XWUser objectWithKeyValues:response];
         success(result);
     } failure:^(NSError *error) {

@@ -23,11 +23,14 @@
 #import "XWHomeStatusResult.h"
 #import "XWUserInfoPara.h"
 #import "XWUserInfoTool.h"
+#import "NSString+XWCacularTextSizeExtension.h"
+#import "XWStatusFrame.h"
+#import "XWTableViewCell.h"
 
 @interface XWHomeTableViewController ()
 @property(nonatomic,assign) BOOL up;
 @property(nonatomic,strong) NSArray* dictArray;
-@property(nonatomic,strong) NSMutableArray* statusArray;
+@property(nonatomic,strong) NSMutableArray* statusFrameArray;
 @property(nonatomic,weak) XWHomeTitleButton* titleBtn;
 @end
 
@@ -45,15 +48,22 @@
     [self.tableView addFooterWithTarget:self action:@selector(refreshOldStatus)];
     //设置标题文字为用户昵称
     [self setupTitleText];
+//    CGSize maxSize={320,MAXFLOAT};
+//   CGSize size= [@"sfsdf33asdadasfasfgasg" sizeWithMaxSize:maxSize font:[UIFont systemFontOfSize:14]];
+//    NSLog(@"size------%f,%f",size.width,size.height);
+    
+    //去掉cell之间的分割线
+    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor=[UIColor lightGrayColor];
     }
 /**
  statusArray懒加载
  */
--(NSMutableArray*)statusArray{
-    if (_statusArray==nil) {
-        _statusArray =[[NSMutableArray alloc]init];
+-(NSMutableArray*)statusFrameArray{
+    if (_statusFrameArray==nil) {
+        _statusFrameArray =[[NSMutableArray alloc]init];
     }
-    return _statusArray;
+    return _statusFrameArray;
 }
 
 /**
@@ -96,85 +106,49 @@
  *  设置上拉刷新旧数据
  */
 -(void)refreshOldStatus{
-//    NSString* statusUrl=@"https://api.weibo.com/2/statuses/home_timeline.json";
-//    NSMutableDictionary* getDict=[NSMutableDictionary dictionary];
-//    XWAccount* account=[XWAccountTool getAccount];
-//    getDict[@"access_token"]=account.access_token;
-//    getDict[@"count"]=@3;
-//    XWStatus* lastObjectStatus=[self.statusArray lastObject];
-//    long long maxId= [lastObjectStatus.idstr longLongValue]-1;
-//    NSString* maxIdStr=[NSString stringWithFormat:@"%lld",maxId];
-//    getDict[@"max_id"]=maxIdStr;
-//    
-//    /**
-//     *  使用自己封装的get请求
-//     */
-//    [XWHttpTool get:statusUrl para:getDict success:^(id response) {
-//        [self.tableView footerEndRefreshing];
-//        NSArray* dictArray=response[@"statuses"];
-//        NSArray* moreStatusArray=[XWStatus objectArrayWithKeyValuesArray:dictArray];
-//        [self.statusArray addObjectsFromArray:moreStatusArray];
-//        [self.tableView reloadData];
-//
-//    } failure:^(NSError *error) {
-//        NSLog(@"%@",error);
-//    }];
-//
+
     XWAccount* account=[XWAccountTool getAccount];
     XWHomeStatusPara* para=[[XWHomeStatusPara alloc]init];
     para.access_token=account.access_token;
     //para是NSnumber
     para.count=@5;
     
-    XWStatus* lastObjectStatus=[self.statusArray lastObject];
+    XWStatusFrame* lastObjectStatusFrame=[self.statusFrameArray lastObject];
+    XWStatus* lastObjectStatus=lastObjectStatusFrame.status;
     para.max_id= @([lastObjectStatus.idstr longLongValue]-1);
 
     [XWHomeStatusTool loadWeiboStatus:para success:^(XWHomeStatusResult *result) {
         [self.tableView footerEndRefreshing];
-        
-        [self.statusArray addObjectsFromArray:result.statuses];
+        //status数组转statusArray数组
+        [self.statusFrameArray addObjectsFromArray:[self statusFrameWithStatus:result.statuses]];
         [self.tableView reloadData];
 
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
-    
+
+}
+
+/**
+ *  status数组转statusFrame数组
+ *
+ */
+-(NSArray*)statusFrameWithStatus:(NSArray*)statuses{
+//    XWStatus* sta=statuses[1];
+//    NSLog(@"%@",sta.user.name);
+    NSMutableArray* tempArray=[NSMutableArray array];
+    for (XWStatus* sta in statuses) {
+       
+        XWStatusFrame* frame=[[XWStatusFrame alloc]init];
+        //传递status数据,进行计算
+        frame.status=sta;
+        [tempArray addObject:frame];
+    }
+    return tempArray;
 }
 
 //下拉刷新新数据
 -(void)RefreshStatus:(UIRefreshControl*)refresh{
-//    AFHTTPRequestOperationManager * mrg=[AFHTTPRequestOperationManager manager];
-//    NSString* statusUrl=@"https://api.weibo.com/2/statuses/home_timeline.json";
-//    NSMutableDictionary* getDict=[NSMutableDictionary dictionary];
-//    XWAccount* account=[XWAccountTool getAccount];
-//    getDict[@"access_token"]=account.access_token;
-//    getDict[@"count"]=@10;
-//    /**
-//     *  如果firstStstus不为空，则发送since_id作为参数
-//     */
-//    XWStatus* firstStstus= [self.statusArray firstObject];
-//    if (firstStstus) {
-//        getDict[@"since_id"]=firstStstus.idstr;
-//    }
-//    
-//    [mrg GET:statusUrl parameters:getDict success:^(AFHTTPRequestOperation *operation, NSDictionary* responseObject) {
-//        //获得微博status的array
-//        self.dictArray=responseObject[@"statuses"];
-//        //通过字典数组来创建一个模型数组
-//        NSArray* newArray=[XWStatus objectArrayWithKeyValuesArray:self.dictArray];
-//        NSRange range=NSMakeRange(0, newArray.count);
-//        NSIndexSet* indexSet=[NSIndexSet indexSetWithIndexesInRange:range];
-//         // 把最新的微博数插入到最前面
-//        [self.statusArray insertObjects:newArray atIndexes:indexSet];
-//        
-//        [self.tableView reloadData];
-//        //弹出新状态数
-//        [self showNewStatusCount:newArray.count];
-//        [refresh endRefreshing];
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"%@",error);
-//        [refresh endRefreshing];
-//    }];
     
     XWAccount* account=[XWAccountTool getAccount];
     XWHomeStatusPara* para=[[XWHomeStatusPara alloc]init];
@@ -182,21 +156,22 @@
     //para是NSnumber
     para.count=@10;
     
-    XWStatus* firstStatus=[self.statusArray firstObject];
+    XWStatusFrame* firstStatusFrame=[self.statusFrameArray firstObject];
+    XWStatus* firstStatus=firstStatusFrame.status;
         if (firstStatus) {
             para.since_id=@([firstStatus.idstr longLongValue]);
         }
     
     [XWHomeStatusTool loadWeiboStatus:para success:^(XWHomeStatusResult *result) {
-      
-        NSRange range=NSMakeRange(0, result.statuses.count);
+        NSArray* newFrames=[self statusFrameWithStatus:result.statuses];
+        NSRange range=NSMakeRange(0, newFrames.count);
         NSIndexSet* indexSet=[NSIndexSet indexSetWithIndexesInRange:range];
          // 把最新的微博数插入到最前面
-        [self.statusArray insertObjects:result.statuses atIndexes:indexSet];
+        [self.statusFrameArray insertObjects:newFrames atIndexes:indexSet];
 
         [self.tableView reloadData];
         //弹出新状态数
-        [self showNewStatusCount:result.statuses.count];
+        [self showNewStatusCount:newFrames.count];
         [refresh endRefreshing];
 
     } failure:^(NSError *error) {
@@ -295,28 +270,22 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    self.tableView.tableFooterView.hidden=self.statusArray.count==0;
-    return self.statusArray.count;
+    self.tableView.tableFooterView.hidden=self.statusFrameArray.count==0;
+    return self.statusFrameArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString* ID=@"statues";
-    UITableViewCell* cell=[tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell==nil) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-    }
-    XWStatus* status=self.statusArray[indexPath.row];
-    cell.detailTextLabel.text=status.user.name;
-    cell.textLabel.text=status.text;
- 
-
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:status.user.profile_image_url] placeholderImage:[UIImage imageNamed:@"cast"]];
-//
-   
+    
+    XWTableViewCell* cell=[XWTableViewCell CellWithTableView:tableView];
+    cell.statusFrame=self.statusFrameArray[indexPath.row];
     return cell;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    XWStatusFrame* StatusFrame=self.statusFrameArray[indexPath.row];
+    return StatusFrame.cellHeight+10;
+}
 
 /*
 // Override to support conditional editing of the table view.
