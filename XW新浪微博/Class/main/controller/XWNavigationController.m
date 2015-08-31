@@ -71,8 +71,6 @@
         viewController.hidesBottomBarWhenPushed=YES;
     }
     [super pushViewController:viewController animated:animated];
-   
-
 }
 
 /*

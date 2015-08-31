@@ -8,8 +8,26 @@
 
 #import "XWInputToolBar.h"
 
-@implementation XWInputToolBar
+@interface XWInputToolBar()
+@property(nonatomic,weak) UIButton* emotionBtn;
+@end
 
+@implementation XWInputToolBar
+/**
+ *  设置表情按钮的image
+ *
+ */
+-(void)setShowSystemEmotionImage:(BOOL)showSystemEmotionImage{
+    _showSystemEmotionImage=showSystemEmotionImage;
+    if (showSystemEmotionImage) {//设置为系统键盘的图标
+        [self.emotionBtn setImage:[UIImage imageNamed:@"compose_emoticonbutton_background_os7"] forState:UIControlStateNormal];
+        [self.emotionBtn setImage:[UIImage imageNamed:@"compose_emoticonbutton_background_highlighted_os7"] forState:UIControlStateHighlighted];
+    }else{//设置为自定义键盘的图标
+        [self.emotionBtn setImage:[UIImage imageNamed:@"compose_keyboardbutton_background"] forState:UIControlStateNormal];
+        [self.emotionBtn setImage:[UIImage imageNamed:@"compose_keyboardbutton_background_highlighted"] forState:UIControlStateHighlighted];
+
+    }
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -20,8 +38,8 @@
         [self addButtonWithIcon:@"compose_trendbutton_background_os7" highIcon:@"compose_trendbutton_background_highlighted_os7" XWInputToolBarButtonType:XWInputToolBarButtonTrend];
         [self addButtonWithIcon:@"compose_camerabutton_background_os7" highIcon:@"compose_camerabutton_background_highlighted_os7"XWInputToolBarButtonType:XWInputToolBarButtonCamera];
         [self addButtonWithIcon:@"compose_toolbar_picture_os7" highIcon:@"compose_toolbar_picture_highlighted_os7"XWInputToolBarButtonType:XWInputToolBarButtonPhoto];
-        [self addButtonWithIcon:@"compose_emoticonbutton_background_os7" highIcon:@"compose_emoticonbutton_background_highlighted_os7"XWInputToolBarButtonType:XWInputToolBarButtonEmotion];
-        [self addButtonWithIcon:@"compose_mentionbutton_background_os7" highIcon:@"compose_mentionbutton_background_highlighted_os7"XWInputToolBarButtonType:XWInputToolBarButtonMention];
+       self.emotionBtn=  [self addButtonWithIcon:@"compose_emoticonbutton_background_os7" highIcon:@"compose_emoticonbutton_background_highlighted_os7"XWInputToolBarButtonType:XWInputToolBarButtonEmotion];
+       [self addButtonWithIcon:@"compose_mentionbutton_background_os7" highIcon:@"compose_mentionbutton_background_highlighted_os7"XWInputToolBarButtonType:XWInputToolBarButtonMention];
     }
     
 
@@ -32,7 +50,7 @@
  *  添加按钮
  *
  */
--(void)addButtonWithIcon:(NSString*)normalImage highIcon:(NSString*)highIcon XWInputToolBarButtonType:(XWInputToolBarButtonType)XWInputToolBarButtonType{
+-(UIButton*)addButtonWithIcon:(NSString*)normalImage highIcon:(NSString*)highIcon XWInputToolBarButtonType:(XWInputToolBarButtonType)XWInputToolBarButtonType{
     UIButton* button=[[UIButton alloc]init];
     //设置button的tag为枚举值
     button.tag=XWInputToolBarButtonType;
@@ -40,7 +58,7 @@
     [button setImage:[UIImage imageNamed:highIcon] forState:UIControlStateHighlighted];
     [button addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
-    
+    return button;
 }
 
 /**

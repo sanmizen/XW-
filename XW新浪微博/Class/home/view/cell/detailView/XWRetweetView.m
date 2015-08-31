@@ -12,6 +12,7 @@
 #import "UIImage+resizable.h"
 #import "XWStatusPhotosView.h"
 #import "XWStatusPhotoView.h"
+#import "XWRetweetedToolBar.h"
 
 @interface XWRetweetView()
 /**
@@ -27,6 +28,11 @@
  *  配图
  */
 @property(nonatomic,weak) XWStatusPhotosView* photosView;
+/**
+ *  toolBar
+ */
+@property(nonatomic,weak) XWRetweetedToolBar* toolBar;
+
 @end
 
 
@@ -55,9 +61,15 @@
         
         //设置配图
         XWStatusPhotosView* photosView=[[XWStatusPhotosView alloc]init];
-//        photosView.backgroundColor=[UIColor redColor];
         self.photosView=photosView;
         [self addSubview:photosView];
+        
+        //设置toolBar
+        XWRetweetedToolBar* toolBar=[[XWRetweetedToolBar alloc]init];
+        
+        self.toolBar=toolBar;
+        [self addSubview:toolBar];
+
     }
     return self;
 }
@@ -77,10 +89,15 @@
     self.textLabel.frame=retweetFrame.textLabelFrame;
     //设置正文数据
     self.textLabel.text=retweetFrame.retweetedStatus.text;
+    
+    //设置toolBar数据
+    self.toolBar.status=retweetFrame.retweetedStatus;
+
+        //设置toolBar frame
+        self.toolBar.frame=retweetFrame.toolBarFrame;
+
     //设置配图view的frame
     if (retweetFrame.retweetedStatus.pic_urls.count) {
-        
-
         
         self.photosView.frame=retweetFrame.photosFrame;
 

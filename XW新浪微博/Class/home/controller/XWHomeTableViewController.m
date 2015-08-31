@@ -26,6 +26,8 @@
 #import "NSString+XWCacularTextSizeExtension.h"
 #import "XWStatusFrame.h"
 #import "XWTableViewCell.h"
+#import "XWStatusDetailTableViewController.h"
+
 
 @interface XWHomeTableViewController ()
 @property(nonatomic,assign) BOOL up;
@@ -48,9 +50,7 @@
     [self.tableView addFooterWithTarget:self action:@selector(refreshOldStatus)];
     //设置标题文字为用户昵称
     [self setupTitleText];
-//    CGSize maxSize={320,MAXFLOAT};
-//   CGSize size= [@"sfsdf33asdadasfasfgasg" sizeWithMaxSize:maxSize font:[UIFont systemFontOfSize:14]];
-//    NSLog(@"size------%f,%f",size.width,size.height);
+
     
     //去掉cell之间的分割线
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
@@ -285,6 +285,17 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     XWStatusFrame* StatusFrame=self.statusFrameArray[indexPath.row];
     return StatusFrame.cellHeight+10;
+}
+
+/**
+ *  点击某行进入微博详情界面
+ *
+ */
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    XWStatusDetailTableViewController* detailController=[[XWStatusDetailTableViewController alloc]init];
+    XWStatusFrame* statusFrame= self.statusFrameArray[indexPath.row];
+    detailController.status=statusFrame.status;
+    [self.navigationController pushViewController:detailController animated:YES];
 }
 
 /*

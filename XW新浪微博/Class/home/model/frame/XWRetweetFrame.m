@@ -9,6 +9,7 @@
 #import "XWRetweetFrame.h"
 #import "XWStatusPhotosView.h"
 
+
 @implementation XWRetweetFrame
 
 -(void)setRetweetedStatus:(XWStatus *)retweetedStatus{
@@ -29,24 +30,35 @@
     self.textLabelFrame=(CGRect){{textX,textY},textSize};
     
     //3.计算配图view的frame
-    CGFloat height=0;
+    CGFloat toolBarY=0;
+    
     if (self.retweetedStatus.pic_urls.count) {
         CGFloat photosX=textX;
         CGFloat photosY=CGRectGetMaxY(self.textLabelFrame)+statusMargin;
         CGSize photoSize=[XWStatusPhotosView sizeWithPhotoCount:(int)self.retweetedStatus.pic_urls.count];
         
         self.photosFrame=(CGRect){{photosX,photosY},photoSize};
-        //依据配图frame计算整个retweet的高度
-        height=CGRectGetMaxY(self.photosFrame)+statusMargin;
-    }else{
-        height=CGRectGetMaxY(self.textLabelFrame)+statusMargin;
+        //如果有配图，计算toolBarframe
+      toolBarY=CGRectGetMaxY(self.photosFrame)+statusMargin;
+        
+    }else{//如果无配图，计算toolBarframe
+      toolBarY=CGRectGetMaxY(self.textLabelFrame)+statusMargin;
     }
+    
+    //3.计算toolBarFrame
+ 
+        CGFloat toolBarW=200;
+        CGFloat toolBarX=[UIScreen mainScreen].bounds.size.width-toolBarW;
+        CGFloat toolBarH=35;
+        self.toolBarFrame=CGRectMake(toolBarX, toolBarY, toolBarW, toolBarH);
+
 
     
-    //3.计算自己frame
+    //4.计算自己frame
     CGFloat x=0;
     CGFloat y=0;//y值暂定为0，在detailFrame中通过original的frame计算
     CGFloat width=[UIScreen mainScreen].bounds.size.width;
+   CGFloat height=CGRectGetMaxY(self.toolBarFrame)+statusMargin;
     self.frame=(CGRect){{x,y},{width,height}};
 }
 

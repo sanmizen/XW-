@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
+
 /**
  利用枚举作为toolBar中得tag属性
  */
@@ -31,5 +32,6 @@ XWInputToolBarButtonMention //@
 
 @interface XWInputToolBar : UIView
 @property(nonatomic,weak) id<XWInputToolBarDelegate> delegate;
+@property(nonatomic,assign) BOOL showSystemEmotionImage;
 @end
 

@@ -42,4 +42,7 @@
 /** 	 object 	微博配图地址。多图时返回多图链接。无配图返回“[]”  数组里面都是HMPhoto模型*/
 @property (nonatomic, strong) NSArray *pic_urls;
 
+/** 	bool 是否显示在详细微博里 默认为NO,代表显示在点进去的转发微博里*/
+@property (nonatomic, assign) BOOL isShowedInDetail;
+
 @end

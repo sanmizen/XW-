@@ -29,6 +29,10 @@
  *  大配图view的frame
  */
 @property(nonatomic,assign) CGRect photosFrame;
+/**
+ *  toolBar的frame
+ */
+@property(nonatomic,assign) CGRect toolBarFrame;
 
 /**
  *  转发的微博数据

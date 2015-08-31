@@ -14,23 +14,20 @@
 #import "XWAccount.h"
 #import "XWAccountTool.h"
 #import "MBProgressHUD+MJ.h"
+#import "XWInputEmotionView.h"
 
 @interface XWComposeViewController ()<XWInputToolBarDelegate,UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property(nonatomic,weak) UITextView* textView;
 @property(nonatomic,weak) XWInputToolBar* inputToolBar;
 @property(nonatomic,weak) XWSelectImageView* selectImageView;
+//由于使用懒加载，故需要用strong
+@property(nonatomic,strong) XWInputEmotionView* inputEmotionView;
 @end
 
 @implementation XWComposeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-//   self.navigationItem.leftBarButtonItem= [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(left)];
-//
-//
-//    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"Send" style:UIBarButtonItemStyleDone target:self action:@selector(right)];
-//    self.navigationItem.rightBarButtonItem.enabled=NO;
     //设置顶上的那啥啥啥
     [self setupHeader];
     //设置中间的输入的那啥东西
@@ -42,6 +39,16 @@
     self.textView.alwaysBounceVertical=YES;
     //设置选中图片后的界面
     [self setupSelectImageView];
+}
+
+/**
+ *  懒加载inputEmotionView
+ */
+-(XWInputEmotionView *)inputEmotionView{
+    if (_inputEmotionView==nil) {
+        _inputEmotionView=[XWInputEmotionView GetEmotionKeyboard];
+    }
+    return _inputEmotionView;
 }
 
 /**
@@ -123,19 +130,32 @@
 -(void)XWInputToolBarButton:(XWInputToolBar *)toolBar didClicked:(XWInputToolBarButtonType)ButtonType{
     switch (ButtonType) {
         case XWInputToolBarButtonCamera:
-            NSLog(@"Camera");
             break;
         case XWInputToolBarButtonEmotion:
-            NSLog(@"Emotion");
+            [self clickEmotion];
             break;
         case XWInputToolBarButtonPhoto:
             [self openAlbum];
-            NSLog(@"openAlbum");
             break;
         default:
             break;
 
     }
+}
+
+-(void)clickEmotion{
+    if (self.textView.inputView) {//自定义inputview有值
+        self.textView.inputView=nil;
+        self.inputToolBar.showSystemEmotionImage=YES;
+    }else{
+        self.textView.inputView=self.inputEmotionView;
+        self.textView.inputView.frame=CGRectMake(0, 0, 320, 250);
+        self.textView.inputView.backgroundColor=[UIColor lightGrayColor];
+        self.inputToolBar.showSystemEmotionImage=NO;
+            }
+    [self.textView resignFirstResponder];
+    [self.textView becomeFirstResponder];
+
 }
 
 //利用modal打开照片选择界面

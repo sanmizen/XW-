@@ -15,6 +15,7 @@
 #import "AFNetworking.h"
 #import "NSString+XWCacularTextSizeExtension.h"
 #import "UIImage+resizable.h"
+#import "UIView+Extension.h"
 
 #define Kclient_id @"3086973007"
 #define Kredirect_uri @"http://www.sina.com.cn/"

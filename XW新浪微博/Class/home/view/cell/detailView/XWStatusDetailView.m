@@ -29,6 +29,7 @@
         //设置转发微博内容
         [self setupRetweetView];
         self.image=[UIImage resizableImage:@"timeline_card_background"];
+        
     }
     return self;
 }
