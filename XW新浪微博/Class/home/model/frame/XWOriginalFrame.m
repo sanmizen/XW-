@@ -15,7 +15,7 @@
 //在此计算原创微博的frame
 -(void)setStatus:(XWStatus *)status{
     _status=status;
-    //1.计算头像frame
+    //1.计算头像frame11111
     CGFloat iconX=statusMargin;
     CGFloat iconY=statusMargin;
     CGFloat iconW=35;
